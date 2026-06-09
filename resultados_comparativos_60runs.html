@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Comparativos — 60 Runs</title>
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --text: #212529;
+            --muted: #6c757d;
+            --border: #dee2e6;
+            --primary: #0d6efd;
+            --success: #198754;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+        }
+        .badge-success { background: var(--success); }
+        .badge-warning { background: var(--warning); color: #212529; }
+        .badge-danger { background: var(--danger); }
+        .card {
+            background: var(--card);
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 0.75rem 0.6rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: #e9ecef;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            position: sticky;
+            top: 0;
+        }
+        tr:hover { background: #f1f3f5; }
+        td:first-child, th:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+        .best { background: #d1e7dd !important; font-weight: 700; }
+        .best td:first-child::before { content: "⭐ "; }
+        .second { background: #fff3cd !important; font-weight: 600; }
+        .third { background: #f8d7da !important; font-weight: 600; }
+        .metric { font-variant-numeric: tabular-nums; }
+        .small { font-size: 0.8rem; color: var(--muted); }
+        .medal { font-size: 1.3rem; }
+        .rank-1 { color: var(--gold); text-shadow: 0 0 2px rgba(0,0,0,0.2); }
+        .rank-2 { color: var(--silver); }
+        .rank-3 { color: var(--bronze); }
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .insight {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+        }
+        .insight h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+        .insight p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Resultados Comparativos</h1>
+        <p class="subtitle">
+            Selección de Características &nbsp;|&nbsp; 
+            Dataset: <span class="badge">dataA_binario.csv</span> &nbsp;|&nbsp; 
+            Runs: <span class="badge badge-success">60</span> &nbsp;|&nbsp; 
+            Features totales: <span class="badge badge-warning">36</span>
+        </p>
+
+        <div class="card">
+            <h3>🏅 Tabla Comparativa (Promedio ± Desv. Est.)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1</th>
+                        <th>ROC AUC</th>
+                        <th>N° Features</th>
+                        <th>Tiempo (s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="best">
+                        <td>baseline</td>
+                        <td class="metric">0.8755 <span class="small">±0.0092</span></td>
+                        <td class="metric">0.8783 <span class="small">±0.0108</span></td>
+                        <td class="metric">0.9482 <span class="small">±0.0095</span></td>
+                        <td class="metric">0.9118 <span class="small">±0.0063</span></td>
+                        <td class="metric">0.9161 <span class="small">±0.0111</span></td>
+                        <td class="metric">36.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0517 <span class="small">±0.0063</span></td>
+                    </tr>
+                    <tr class="second">
+                        <td>variance_threshold</td>
+                        <td class="metric">0.8755 <span class="small">±0.0092</span></td>
+                        <td class="metric">0.8783 <span class="small">±0.0108</span></td>
+                        <td class="metric">0.9483 <span class="small">±0.0096</span></td>
+                        <td class="metric">0.9118 <span class="small">±0.0063</span></td>
+                        <td class="metric">0.9161 <span class="small">±0.0111</span></td>
+                        <td class="metric">36.0 <span class="small">±0.2</span></td>
+                        <td class="metric">0.0514 <span class="small">±0.0062</span></td>
+                    </tr>
+                    <tr class="third">
+                        <td>rfecv</td>
+                        <td class="metric">0.8751 <span class="small">±0.0100</span></td>
+                        <td class="metric">0.8791 <span class="small">±0.0111</span></td>
+                        <td class="metric">0.9465 <span class="small">±0.0094</span></td>
+                        <td class="metric">0.9115 <span class="small">±0.0069</span></td>
+                        <td class="metric">0.9155 <span class="small">±0.0112</span></td>
+                        <td class="metric">30.0 <span class="small">±3.6</span></td>
+                        <td class="metric">0.0088 <span class="small">±0.0011</span></td>
+                    </tr>
+                    <tr>
+                        <td>l1</td>
+                        <td class="metric">0.8750 <span class="small">±0.0099</span></td>
+                        <td class="metric">0.8785 <span class="small">±0.0113</span></td>
+                        <td class="metric">0.9473 <span class="small">±0.0098</span></td>
+                        <td class="metric">0.9115 <span class="small">±0.0067</span></td>
+                        <td class="metric">0.9159 <span class="small">±0.0111</span></td>
+                        <td class="metric">27.0 <span class="small">±1.7</span></td>
+                        <td class="metric">0.0074 <span class="small">±0.0006</span></td>
+                    </tr>
+                    <tr>
+                        <td>rf_median</td>
+                        <td class="metric">0.8701 <span class="small">±0.0105</span></td>
+                        <td class="metric">0.8691 <span class="small">±0.0113</span></td>
+                        <td class="metric">0.9523 <span class="small">±0.0094</span></td>
+                        <td class="metric">0.9087 <span class="small">±0.0071</span></td>
+                        <td class="metric">0.9070 <span class="small">±0.0127</span></td>
+                        <td class="metric">18.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0059 <span class="small">±0.0005</span></td>
+                    </tr>
+                    <tr>
+                        <td>rfe</td>
+                        <td class="metric">0.8670 <span class="small">±0.0102</span></td>
+                        <td class="metric">0.8750 <span class="small">±0.0113</span></td>
+                        <td class="metric">0.9384 <span class="small">±0.0107</span></td>
+                        <td class="metric">0.9055 <span class="small">±0.0070</span></td>
+                        <td class="metric">0.9104 <span class="small">±0.0121</span></td>
+                        <td class="metric">10.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0038 <span class="small">±0.0002</span></td>
+                    </tr>
+                    <tr>
+                        <td>rf_topk</td>
+                        <td class="metric">0.8581 <span class="small">±0.0122</span></td>
+                        <td class="metric">0.8580 <span class="small">±0.0117</span></td>
+                        <td class="metric">0.9482 <span class="small">±0.0163</span></td>
+                        <td class="metric">0.9007 <span class="small">±0.0087</span></td>
+                        <td class="metric">0.8944 <span class="small">±0.0138</span></td>
+                        <td class="metric">10.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0041 <span class="small">±0.0002</span></td>
+                    </tr>
+                    <tr>
+                        <td>mutual_info</td>
+                        <td class="metric">0.8570 <span class="small">±0.0129</span></td>
+                        <td class="metric">0.8646 <span class="small">±0.0131</span></td>
+                        <td class="metric">0.9365 <span class="small">±0.0187</span></td>
+                        <td class="metric">0.8989 <span class="small">±0.0093</span></td>
+                        <td class="metric">0.8969 <span class="small">±0.0134</span></td>
+                        <td class="metric">10.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0061 <span class="small">±0.0003</span></td>
+                    </tr>
+                    <tr>
+                        <td>chi2</td>
+                        <td class="metric">0.8472 <span class="small">±0.0109</span></td>
+                        <td class="metric">0.8596 <span class="small">±0.0114</span></td>
+                        <td class="metric">0.9266 <span class="small">±0.0122</span></td>
+                        <td class="metric">0.8918 <span class="small">±0.0075</span></td>
+                        <td class="metric">0.8925 <span class="small">±0.0131</span></td>
+                        <td class="metric">10.0 <span class="small">±0.0</span></td>
+                        <td class="metric">0.0037 <span class="small">±0.0001</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>🏆 Ranking por Accuracy</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Método</th>
+                        <th>Accuracy Promedio</th>
+                        <th>Features Usadas</th>
+                        <th>Observación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="best">
+                        <td class="medal rank-1">🥇</td>
+                        <td><strong>baseline</strong></td>
+                        <td class="metric">0.8755</td>
+                        <td>36</td>
+                        <td>Referencia con todas las features</td>
+                    </tr>
+                    <tr class="second">
+                        <td class="medal rank-2">🥈</td>
+                        <td><strong>variance_threshold</strong></td>
+                        <td class="metric">0.8755</td>
+                        <td>~36</td>
+                        <td>Equivalente al baseline</td>
+                    </tr>
+                    <tr class="third">
+                        <td class="medal rank-3">🥉</td>
+                        <td><strong>rfecv</strong></td>
+                        <td class="metric">0.8751</td>
+                        <td>~30</td>
+                        <td>Mayor precision, selección automática</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>l1</td>
+                        <td class="metric">0.8750</td>
+                        <td>~27</td>
+                        <td>Mejor balance reducción/rendimiento</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>rf_median</td>
+                        <td class="metric">0.8701</td>
+                        <td>18</td>
+                        <td>Reducción del 50%</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>rfe</td>
+                        <td class="metric">0.8670</td>
+                        <td>10</td>
+                        <td>Wrapper eficiente con top 10</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>rf_topk</td>
+                        <td class="metric">0.8581</td>
+                        <td>10</td>
+                        <td>Rápido pero inestable</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>mutual_info</td>
+                        <td class="metric">0.8570</td>
+                        <td>10</td>
+                        <td>Información mutua</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>chi2</td>
+                        <td class="metric">0.8472</td>
+                        <td>10</td>
+                        <td>Más rápido, menor accuracy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>💡 Conclusiones Clave</h3>
+            <div class="insights">
+                <div class="insight">
+                    <h4>🎯 Mayor Accuracy</h4>
+                    <p><strong>Baseline</strong> recupera el primer lugar (87.55%) al aumentar a 60 runs, aunque la ventaja sobre <strong>RFECV</strong> (87.51%) y <strong>L1</strong> (87.50%) es mínima.</p>
+                </div>
+                <div class="insight">
+                    <h4>⚖️ Mejor Balance</h4>
+                    <p><strong>L1</strong> mantiene 87.50% de accuracy con solo ~27 features, siendo prácticamente equivalente al modelo completo.</p>
+                </div>
+                <div class="insight">
+                    <h4>✂️ Mayor Reducción</h4>
+                    <p><strong>RFE</strong> reduce drásticamente a 10 features manteniendo 86.70% de accuracy.</p>
+                </div>
+                <div class="insight">
+                    <h4>⚡ Más Rápido</h4>
+                    <p><strong>Chi2</strong> (0.0037s) y <strong>RFE</strong> (0.0038s) son los métodos más veloces para pipelines iterativos.</p>
+                </div>
+                <div class="insight">
+                    <h4>📈 Estabilidad</h4>
+                    <p>Con 60 runs, los métodos <strong>wrapper</strong> y <strong>embedded</strong> se consolidan como alternativas robustas al baseline.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
